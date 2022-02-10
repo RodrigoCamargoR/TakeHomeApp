@@ -34,6 +34,7 @@
 		84772E3427B5A6FE00439405 /* ArtistController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84772E3327B5A6FE00439405 /* ArtistController.swift */; };
 		84772E3627B5B11800439405 /* InitialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84772E3527B5B11800439405 /* InitialController.swift */; };
 		84772E3827B5B7F600439405 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84772E3727B5B7F500439405 /* HomeController.swift */; };
+		84772E3A27B5BAB300439405 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84772E3927B5BAB300439405 /* AuthController.swift */; };
 		ECE4D1AD1387705E5D134038 /* Pods_Take_Home_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DB0F1DEEB44842B1FB4EBD5 /* Pods_Take_Home_App.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		84772E3327B5A6FE00439405 /* ArtistController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistController.swift; sourceTree = "<group>"; };
 		84772E3527B5B11800439405 /* InitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialController.swift; sourceTree = "<group>"; };
 		84772E3727B5B7F500439405 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		84772E3927B5BAB300439405 /* AuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +216,7 @@
 				84772E3327B5A6FE00439405 /* ArtistController.swift */,
 				84772E3527B5B11800439405 /* InitialController.swift */,
 				84772E3727B5B7F500439405 /* HomeController.swift */,
+				84772E3927B5BAB300439405 /* AuthController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				84772E2627B319D200439405 /* ArtistCollectionViewCell.swift in Sources */,
 				84772DEF27AC7A6B00439405 /* AppDelegate.swift in Sources */,
 				84772E2027B0E4F300439405 /* Image.swift in Sources */,
+				84772E3A27B5BAB300439405 /* AuthController.swift in Sources */,
 				84772E2F27B5812100439405 /* SongTableViewCell.swift in Sources */,
 				84772E1C27B0808200439405 /* SpotifyManager+SearchArtist.swift in Sources */,
 				84772E1827AFB60400439405 /* SpotifyManager+RefreshToken.swift in Sources */,

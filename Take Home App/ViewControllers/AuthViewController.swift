@@ -11,6 +11,8 @@ import WebKit
 class AuthViewController: UIViewController {
 
     //MARK: - Properties
+    private lazy var controller = AuthController(viewController: self)
+    
     private let webView: WKWebView = {
         let prefs = WKWebpagePreferences()
         prefs.allowsContentJavaScript = true
@@ -56,9 +58,6 @@ extension AuthViewController: WKNavigationDelegate {
         
         let component = URLComponents(string: url.absoluteString)
         guard let code = component?.queryItems?.first(where: { $0.name == "code" })?.value else { return }
-        
-        SpotifyManager.shared.exchangeCodeForToken(code: code) { [weak self] success in
-            self?.completionHandler?(success)
-        }
+        controller.exchangeCodeForToken(code)
     }
 }
