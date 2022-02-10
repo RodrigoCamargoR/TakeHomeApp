@@ -10,6 +10,8 @@ import UIKit
 class HomeViewController: UIViewController {
 
     //MARK: - Properties
+    private lazy var controller = HomeController(viewController: self)
+    
     private var signOutButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.setTitle("Sign Out", for: .normal)
@@ -144,25 +146,7 @@ class HomeViewController: UIViewController {
             !query.isEmpty
         else { return }
         
-        let vc = ArtistsViewController()
-        vc.modalPresentationStyle = .popover
-        
-        SpotifyManager.shared.searchArtists(with: query) { [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let response):
-                    vc.query = query
-                    if let artists = response.artists.items {
-                        vc.artists = artists.sorted(by: { $0.popularity > $1.popularity } )
-                        self?.navigationController?.pushViewController(vc, animated: true)
-                    }
-                    break
-                case .failure(let error):
-                    print(error.localizedDescription)
-                    break
-                }
-            }
-        }
+        controller.searchArtists(with: query)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -170,21 +154,20 @@ class HomeViewController: UIViewController {
     }
     
     @objc private func signOut() {
-
-        SpotifyManager.shared.signOut { [weak self] success in
-            guard success else { return }
-            let confirmationAlert = UIAlertController(title: "Sign Out", message: "Are you sure you want to sign out?", preferredStyle: .alert)
-            let cancelSignOut = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            let confirmSignOut = UIAlertAction(title: "Confirm", style: .destructive) { _ in
-                let navController = UINavigationController(rootViewController: ViewController())
-                navController.modalPresentationStyle = .fullScreen
-                self?.present(navController, animated: true)
-            }
-            confirmationAlert.addAction(cancelSignOut)
-            confirmationAlert.addAction(confirmSignOut)
-            self?.present(confirmationAlert, animated: true)
+        controller.signOut()
+    }
+    
+    func performSignOut() {
+        let confirmationAlert = UIAlertController(title: "Sign Out", message: "Are you sure you want to sign out?", preferredStyle: .alert)
+        let cancelSignOut = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let confirmSignOut = UIAlertAction(title: "Confirm", style: .destructive) { [weak self] _ in
+            let navController = UINavigationController(rootViewController: ViewController())
+            navController.modalPresentationStyle = .fullScreen
+            self?.present(navController, animated: true)
         }
-
+        confirmationAlert.addAction(cancelSignOut)
+        confirmationAlert.addAction(confirmSignOut)
+        present(confirmationAlert, animated: true)
     }
 
 }
@@ -193,7 +176,6 @@ extension HomeViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard let query = searchBar.searchTextField.text else { return }
-        
         searchButton.isUserInteractionEnabled = !query.isEmpty
     }
     

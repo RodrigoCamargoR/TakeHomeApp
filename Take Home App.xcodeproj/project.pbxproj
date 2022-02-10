@@ -33,6 +33,7 @@
 		84772E2F27B5812100439405 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84772E2E27B5812100439405 /* SongTableViewCell.swift */; };
 		84772E3427B5A6FE00439405 /* ArtistController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84772E3327B5A6FE00439405 /* ArtistController.swift */; };
 		84772E3627B5B11800439405 /* InitialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84772E3527B5B11800439405 /* InitialController.swift */; };
+		84772E3827B5B7F600439405 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84772E3727B5B7F500439405 /* HomeController.swift */; };
 		ECE4D1AD1387705E5D134038 /* Pods_Take_Home_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DB0F1DEEB44842B1FB4EBD5 /* Pods_Take_Home_App.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +69,7 @@
 		84772E2E27B5812100439405 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		84772E3327B5A6FE00439405 /* ArtistController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistController.swift; sourceTree = "<group>"; };
 		84772E3527B5B11800439405 /* InitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialController.swift; sourceTree = "<group>"; };
+		84772E3727B5B7F500439405 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +213,7 @@
 			children = (
 				84772E3327B5A6FE00439405 /* ArtistController.swift */,
 				84772E3527B5B11800439405 /* InitialController.swift */,
+				84772E3727B5B7F500439405 /* HomeController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				84772E1E27B0DAA800439405 /* Artist.swift in Sources */,
 				84772E3627B5B11800439405 /* InitialController.swift in Sources */,
 				84772E0A27AF742D00439405 /* AuthResponse.swift in Sources */,
+				84772E3827B5B7F600439405 /* HomeController.swift in Sources */,
 				84772E1627AFB4F300439405 /* SpotifyManager+Token.swift in Sources */,
 				84772DF127AC7A6B00439405 /* SceneDelegate.swift in Sources */,
 			);
