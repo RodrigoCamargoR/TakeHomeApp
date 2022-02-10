@@ -12,7 +12,6 @@ extension SpotifyManager {
     func searchSongs(by artistID: String, completion: @escaping (Result<TracksResponse, Error>) -> Void) {
         
         let urlString = "\(Constants.API.artistsEndpoint)\(artistID)/top-tracks?market=ES"
-        print(urlString)
         guard let url = URL(string: urlString) else { return }
         
         createRequest(with: url, type: .GET) { request in

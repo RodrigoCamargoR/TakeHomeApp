@@ -145,12 +145,6 @@ class ArtistProfileViewController: UIViewController {
 
 extension ArtistProfileViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let songs = artistSongs else { return }
-        
-        print(songs[indexPath.row].name)
-    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(60)
     }
