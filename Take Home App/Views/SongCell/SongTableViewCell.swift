@@ -41,7 +41,9 @@ class SongTableViewCell: UITableViewCell {
         return label
     }()
     
-    func setupCell(with song: Song) {
+    func setupCell(with song: Song?) {
+        guard let song = song else { return }
+
         nameLabel.text = song.name
         durationLabel.text = song.getDurationInMinutes()
         

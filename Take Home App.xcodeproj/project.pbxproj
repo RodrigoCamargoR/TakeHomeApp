@@ -31,6 +31,7 @@
 		84772E2B27B5610D00439405 /* SpotifyManager+Songs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84772E2A27B5610C00439405 /* SpotifyManager+Songs.swift */; };
 		84772E2D27B5672500439405 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84772E2C27B5672500439405 /* Song.swift */; };
 		84772E2F27B5812100439405 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84772E2E27B5812100439405 /* SongTableViewCell.swift */; };
+		84772E3427B5A6FE00439405 /* ArtistController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84772E3327B5A6FE00439405 /* ArtistController.swift */; };
 		ECE4D1AD1387705E5D134038 /* Pods_Take_Home_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DB0F1DEEB44842B1FB4EBD5 /* Pods_Take_Home_App.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		84772E2A27B5610C00439405 /* SpotifyManager+Songs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpotifyManager+Songs.swift"; sourceTree = "<group>"; };
 		84772E2C27B5672500439405 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		84772E2E27B5812100439405 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		84772E3327B5A6FE00439405 /* ArtistController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				84772E0827AF741800439405 /* Models */,
 				84772E2327B319A000439405 /* Views */,
 				84772E0B27AF897600439405 /* ViewControllers */,
+				84772E3227B5A6CD00439405 /* Controllers */,
 				84772E0C27AF899E00439405 /* Constants */,
 				84772E0327AC7BB700439405 /* SupportingFiles */,
 				84772DFC27AC7A6E00439405 /* Info.plist */,
@@ -199,6 +202,14 @@
 				84772E2E27B5812100439405 /* SongTableViewCell.swift */,
 			);
 			path = SongCell;
+			sourceTree = "<group>";
+		};
+		84772E3227B5A6CD00439405 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				84772E3327B5A6FE00439405 /* ArtistController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		B56DB16F8FF3F6FBE7890665 /* Frameworks */ = {
@@ -328,6 +339,7 @@
 				84772E2927B4C3E300439405 /* ArtistProfileViewController.swift in Sources */,
 				84772E1427AFB44000439405 /* SpotifyManager+Auth.swift in Sources */,
 				84772E0727AF46AE00439405 /* Constants.swift in Sources */,
+				84772E3427B5A6FE00439405 /* ArtistController.swift in Sources */,
 				84772E2B27B5610D00439405 /* SpotifyManager+Songs.swift in Sources */,
 				84772E0527AF45CC00439405 /* SpotifyManager.swift in Sources */,
 				84772E2227B3085500439405 /* ArtistsViewController.swift in Sources */,

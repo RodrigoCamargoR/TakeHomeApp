@@ -12,8 +12,8 @@ class ArtistProfileViewController: UIViewController {
     
     
     //MARK: - Properties
-    private var artist: Artist?
-    private var artistSongs: [Song]?
+
+    private var controller: ArtistController?
     
     private var profileImage: UIImageView = {
         let imageView = UIImageView(frame: .zero)
@@ -54,21 +54,19 @@ class ArtistProfileViewController: UIViewController {
     }()
     
     //MARK: - Life cycle
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        controller = ArtistController()
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        guard let artist = artist else { return }
+        guard let controller = controller else { return }
 
-        SpotifyManager.shared.searchSongs(by: artist.id) { [weak self] result in
-            switch result {
-            case .success(let response):
-                self?.artistSongs = response.tracks
-                
-                DispatchQueue.main.async {
-                    self?.songsTableView.reloadData()
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
+        controller.fetchSongs { songs in
+            DispatchQueue.main.async { [weak self] in
+                self?.songsTableView.reloadData()
             }
         }
     }
@@ -115,11 +113,18 @@ class ArtistProfileViewController: UIViewController {
     
     //MARK: - Methods
     func setArtist(artist: Artist) {
-        self.artist = artist
+        controller = ArtistController()
+        guard let controller = controller else { return }
+
+        controller.setArtist(with: artist)
     }
 
     private func setUpProfile() {
-        guard let artist = artist else { return }
+        guard
+            let controller = controller,
+            let artist = controller.getArtist()
+        else { return }
+        
         artistName.text = artist.name
         
         artist.genres.forEach { genre in
@@ -153,7 +158,8 @@ extension ArtistProfileViewController: UITableViewDelegate {
 extension ArtistProfileViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let songs = artistSongs else { return 0 }
+        guard let controller = controller else { return 0 }
+        let songs = controller.getSongs()
         
         return songs.count > 5 ? 5 : songs.count
     }
@@ -163,10 +169,11 @@ extension ArtistProfileViewController: UITableViewDataSource {
         
         guard
             let songCell = cell as? SongTableViewCell,
-            let songs = artistSongs
+            let controller = controller
         else { return cell }
         
-        songCell.setupCell(with: songs[indexPath.row])
+        let currentSong = controller.getSong(from: indexPath.row)
+        songCell.setupCell(with: currentSong)
         
         return songCell
     }
