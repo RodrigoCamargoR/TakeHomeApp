@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     
     private var loginButton: UIButton = {
         let button = UIButton(frame: .zero)
-        button.setTitle("Log in", for: .normal)
+        button.setTitle(Constants.Texts.logInWithSpotify, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .systemGreen
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -77,8 +77,8 @@ class ViewController: UIViewController {
             logoImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
             loginButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -90),
-            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
-            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
+            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 90),
+            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -90),
             loginButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }

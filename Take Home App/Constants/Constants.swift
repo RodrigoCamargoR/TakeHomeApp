@@ -38,6 +38,7 @@ struct Constants {
         static let searchArtist = "Search artist"
         static let search = "Search"
         
+        static let logInWithSpotify = "Log in with Spotify"
         static let signIn = "Sign in"
         static let signOut = "Sign Out"
         static let confirmSignOut = "Are you sure you want to sign out?"
