@@ -54,21 +54,12 @@ class ArtistProfileViewController: UIViewController {
     }()
     
     //MARK: - Life cycle
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        controller = ArtistController()
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         guard let controller = controller else { return }
 
-        controller.fetchSongs { songs in
-            DispatchQueue.main.async { [weak self] in
-                self?.songsTableView.reloadData()
-            }
-        }
+        controller.fetchSongs()
     }
     
     override func viewDidLayoutSubviews() {
@@ -113,7 +104,7 @@ class ArtistProfileViewController: UIViewController {
     
     //MARK: - Methods
     func setArtist(artist: Artist) {
-        controller = ArtistController()
+        controller = ArtistController(viewController: self)
         guard let controller = controller else { return }
 
         controller.setArtist(with: artist)
@@ -145,6 +136,12 @@ class ArtistProfileViewController: UIViewController {
         guard let url = URL(string: urlString) else { return }
         
         profileImage.kf.setImage(with: url)
+    }
+    
+    func reloadTable() {
+        DispatchQueue.main.async { [weak self] in
+            self?.songsTableView.reloadData()
+        }
     }
 }
 

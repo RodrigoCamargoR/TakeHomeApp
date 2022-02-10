@@ -12,6 +12,12 @@ class ArtistController {
     private var artist: Artist?
     private var artistSongs: [Song]?
     
+    private var viewController: ArtistProfileViewController
+    
+    init(viewController: ArtistProfileViewController) {
+        self.viewController = viewController
+    }
+    
     func setArtist(with artist: Artist) {
         self.artist = artist
     }
@@ -34,14 +40,14 @@ class ArtistController {
         return artistSongs[position]
     }
     
-    func fetchSongs(completion: @escaping ([Song]) -> Void) {
+    func fetchSongs() {
         guard let artist = artist else { return }
 
         SpotifyManager.shared.searchSongs(by: artist.id) { [weak self] result in
             switch result {
             case .success(let response):
                 self?.artistSongs = response.tracks
-                completion(response.tracks)
+                self?.viewController.reloadTable()
             case .failure(let error):
                 print(error.localizedDescription)
             }
