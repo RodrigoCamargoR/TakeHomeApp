@@ -10,6 +10,8 @@ import UIKit
 class ViewController: UIViewController {
     
     //MARK: - Properties
+    private lazy var controller = InitialController(viewController: self)
+    
     private var welcomeLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.textColor = .black
@@ -83,29 +85,16 @@ class ViewController: UIViewController {
     
     //MARK: - Actions
     @objc private func didTapLogIn() {
-        print("LoginTapped")
         let vc = AuthViewController()
         vc.completionHandler = { [weak self] success in
             DispatchQueue.main.async {
-                self?.handleSignIn(success: success)
+                self?.controller.handleSignIn(success: success)
             }
         }
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    private func handleSignIn(success: Bool) {
-        guard success else {
-            showErrorAlert()
-            return
-        }
-        
-        let vc = HomeViewController()
-        let navigationController = UINavigationController(rootViewController: vc)
-        navigationController.modalPresentationStyle = .fullScreen
-        present(navigationController, animated: true)
-    }
-    
-    private func showErrorAlert() {
+    func showErrorAlert() {
         let alert = UIAlertController(title: "Oops", message: "Something when wrong logging in", preferredStyle: .alert)
         let dismiss = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
         alert.addAction(dismiss)
