@@ -21,6 +21,15 @@ class ViewController: UIViewController {
         return label
     }()
     
+    private var logoImage: UIImageView = {
+        let image = UIImageView(frame: .zero)
+        image.image = UIImage(named: "original_black")
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        
+        return image
+    }()
+    
     private var loginButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.setTitle("Log in", for: .normal)
@@ -47,6 +56,7 @@ class ViewController: UIViewController {
     //MARK: - Setups
     private func setupViews() {
         view.addSubview(welcomeLabel)
+        view.addSubview(logoImage)
         view.addSubview(loginButton)
         
         view.backgroundColor = .white
@@ -58,6 +68,11 @@ class ViewController: UIViewController {
             welcomeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             welcomeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             welcomeLabel.heightAnchor.constraint(equalToConstant: 50),
+            
+            logoImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            logoImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            logoImage.topAnchor.constraint(equalTo: view.topAnchor),
+            logoImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
             loginButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -90),
             loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),

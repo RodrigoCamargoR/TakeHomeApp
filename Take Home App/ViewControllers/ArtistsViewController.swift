@@ -12,7 +12,6 @@ class ArtistsViewController: UIViewController {
     //MARK: - Properties
     private lazy var artistsTitle: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = artists != nil ? "Artists found for: \(query ?? "")" : "There were no results for \(query ?? "")"
         label.font = UIFont(name: "Arial", size: 20)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -40,13 +39,21 @@ class ArtistsViewController: UIViewController {
         super.viewDidLoad()
 
         setupViews()
+        
+        guard let artists = artists else { return }
+        artistsTitle.text = !artists.isEmpty ? "Artists found for: \(query ?? "")" : "There were no results for \(query ?? "")"
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.isHidden = false
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        navigationController?.navigationBar.isHidden = false
         
         setupConstraints()
-        navigationController?.navigationBar.isHidden = false
         collectionView.reloadData()
     }
 

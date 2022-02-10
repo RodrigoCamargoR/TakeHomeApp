@@ -9,9 +9,35 @@ import Foundation
 
 extension SpotifyManager {
     
-    func searchSongs(by artistID: String) -> Bool {
+    func searchSongs(by artistID: String, completion: @escaping (Result<TracksResponse, Error>) -> Void) {
         
-        return true
+        let urlString = "\(Constants.API.artistsEndpoint)\(artistID)/top-tracks?market=ES"
+        print(urlString)
+        guard let url = URL(string: urlString) else { return }
+        
+        createRequest(with: url, type: .GET) { request in
+            let dataTask = URLSession.shared.dataTask(with: request) { data, _, error in
+                guard
+                    let data = data,
+                    error == nil
+                else {
+                    completion(.failure(error!))
+                    return
+                }
+                
+                do {
+                    let decoder = JSONDecoder()
+                    let result = try decoder.decode(TracksResponse.self, from: data)
+                    
+                    completion(.success(result))
+                }
+                catch {
+                    print(error.localizedDescription)
+                    completion(.failure(error))
+                }
+            }
+            dataTask.resume()
+        }
     }
     
 }

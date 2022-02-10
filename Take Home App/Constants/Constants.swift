@@ -15,6 +15,7 @@ struct Constants {
         static let redirectUri = "https://www.spotify.com/"
         static let authBaseUrl = "https://accounts.spotify.com/authorize"
         static let searchEndpoint = "https://api.spotify.com/v1/search"
+        static let artistsEndpoint = "https://api.spotify.com/v1/artists/"
         
         static let authCode = "AQDfJ1ib82F0SwUo5PzkF42idoAAJhDo9xTqTUqUV6-QFrZHgZTvbDNSWXJLEnbbu55YwMCPZb8nEWiMtjPAWMzcZyYFAN1X9VlPZKlmaxzARE0Pp2hcFhRSHrC1WErBpqL1D6hEhVJqG0YXW4xzLqfz2EFHPWxgaova1RjiVKZV-ZnGStxKMq21pbezvtM"
         static let tokenApiUrl = "https://accounts.spotify.com/api/token"

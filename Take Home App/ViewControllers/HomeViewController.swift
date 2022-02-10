@@ -21,6 +21,15 @@ class HomeViewController: UIViewController {
         return button
     }()
     
+    private let logoImage: UIImageView = {
+        let image = UIImageView(frame: .zero)
+        image.image = UIImage(named: "logo_white")
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        
+        return image
+    }()
+    
     private var welcomeLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = UIFont(name: "Arial", size: 38)
@@ -78,8 +87,9 @@ class HomeViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        setupConstraints()
         navigationController?.navigationBar.isHidden = true
+        
+        setupConstraints()
         searchButton.layer.cornerRadius = searchButton.frame.height / 2
     }
     
@@ -88,6 +98,7 @@ class HomeViewController: UIViewController {
         searchBar.delegate = self
         
         view.addSubview(signOutButton)
+        view.addSubview(logoImage)
         view.addSubview(welcomeLabel)
         view.addSubview(searchArtistLabel)
         view.addSubview(searchBar)
@@ -101,11 +112,16 @@ class HomeViewController: UIViewController {
             signOutButton.widthAnchor.constraint(equalToConstant: 100),
             signOutButton.heightAnchor.constraint(equalToConstant: 44),
             
-            welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
+            logoImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
+            logoImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            logoImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            logoImage.heightAnchor.constraint(equalToConstant: 120),
+            
+            welcomeLabel.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: 10),
             welcomeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             welcomeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            searchArtistLabel.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 120),
+            searchArtistLabel.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 80),
             searchArtistLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             searchArtistLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
@@ -138,10 +154,8 @@ class HomeViewController: UIViewController {
                     vc.query = query
                     if let artists = response.artists.items {
                         vc.artists = artists.sorted(by: { $0.popularity > $1.popularity } )
-                    } else {
-                        vc.artists = nil
+                        self?.navigationController?.pushViewController(vc, animated: true)
                     }
-                    self?.navigationController?.pushViewController(vc, animated: true)
                     break
                 case .failure(let error):
                     print(error.localizedDescription)
