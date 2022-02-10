@@ -35,7 +35,7 @@ class AuthViewController: UIViewController {
     
     //MARK: - Setups
     private func setupViews() {
-        title = "Sign in"
+        title = Constants.Texts.signIn
         view.backgroundColor = .systemBackground
         view.addSubview(webView)
         webView.frame = view.bounds

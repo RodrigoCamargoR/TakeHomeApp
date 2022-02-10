@@ -26,12 +26,34 @@ struct Constants {
         static let authHeaderField = "Authorization"
     }
     
+    struct Fonts {
+        static let arial = "Arial"
+    }
+    
     struct Texts {
         static let welcomeMessage = "Welcome!"
+        static let welcomeToApp = "Welcome to\nTake Home App"
+        
+        static let searchFavoriteSinger = "Look for your favorite singer!"
+        static let searchArtist = "Search artist"
+        static let search = "Search"
+        
+        static let signIn = "Sign in"
+        static let signOut = "Sign Out"
+        static let confirmSignOut = "Are you sure you want to sign out?"
+        
+        static let artistFoundFor = "Artists found for: "
+        static let artistNotFound = "There were no results for"
+        
+        static let cancelButton = "Cancel"
+        static let confirmButton = "Confirm"
+        static let dismissButton = "Dismiss"
     }
     
     struct Errors {
         static let errorGettingBase64String = "There was an error when getting the base64 string"
+        static let oops = "Oops"
+        static let errorLogingIn = "Something when wrong logging in"
     }
     
     struct UserDefaults {

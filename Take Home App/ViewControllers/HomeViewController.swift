@@ -14,7 +14,7 @@ class HomeViewController: UIViewController {
     
     private var signOutButton: UIButton = {
         let button = UIButton(frame: .zero)
-        button.setTitle("Sign Out", for: .normal)
+        button.setTitle(Constants.Texts.signOut, for: .normal)
         button.backgroundColor = .clear
         button.titleLabel?.textColor = .white
         button.addTarget(self, action: #selector(signOut), for: .touchUpInside)
@@ -34,8 +34,8 @@ class HomeViewController: UIViewController {
     
     private var welcomeLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.font = UIFont(name: "Arial", size: 38)
-        label.text = "Welcome to\nTake Home App"
+        label.font = UIFont(name: Constants.Fonts.arial, size: 38)
+        label.text = Constants.Texts.welcomeToApp
         label.textAlignment = .center
         label.textColor = .white
         label.numberOfLines = 0
@@ -46,8 +46,8 @@ class HomeViewController: UIViewController {
     
     private var searchArtistLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.font = UIFont(name: "Arial", size: 20)
-        label.text = "Look for your favorite singer!"
+        label.font = UIFont(name: Constants.Fonts.arial, size: 20)
+        label.text = Constants.Texts.searchFavoriteSinger
         label.textAlignment = .center
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -58,7 +58,7 @@ class HomeViewController: UIViewController {
     private var searchBar: UISearchBar = {
         let searchBar = UISearchBar(frame: .zero)
         searchBar.translatesAutoresizingMaskIntoConstraints = false
-        searchBar.placeholder = "Search artist"
+        searchBar.placeholder = Constants.Texts.searchArtist
         searchBar.backgroundColor = .darkGray
         searchBar.searchTextField.textColor = .darkGray
         searchBar.searchTextField.backgroundColor = .systemGray5
@@ -69,7 +69,7 @@ class HomeViewController: UIViewController {
     
     private var searchButton: UIButton = {
         let button = UIButton(frame: .zero)
-        button.setTitle("Search", for: .normal)
+        button.setTitle(Constants.Texts.search, for: .normal)
         button.addTarget(self, action: #selector(searchButtosWasTapped), for: .touchUpInside)
         button.backgroundColor = .systemGreen
         button.tintColor = .white
@@ -158,9 +158,9 @@ class HomeViewController: UIViewController {
     }
     
     func performSignOut() {
-        let confirmationAlert = UIAlertController(title: "Sign Out", message: "Are you sure you want to sign out?", preferredStyle: .alert)
-        let cancelSignOut = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let confirmSignOut = UIAlertAction(title: "Confirm", style: .destructive) { [weak self] _ in
+        let confirmationAlert = UIAlertController(title: Constants.Texts.signOut, message: Constants.Texts.confirmSignOut, preferredStyle: .alert)
+        let cancelSignOut = UIAlertAction(title: Constants.Texts.cancelButton, style: .cancel, handler: nil)
+        let confirmSignOut = UIAlertAction(title: Constants.Texts.confirmButton, style: .destructive) { [weak self] _ in
             let navController = UINavigationController(rootViewController: ViewController())
             navController.modalPresentationStyle = .fullScreen
             self?.present(navController, animated: true)

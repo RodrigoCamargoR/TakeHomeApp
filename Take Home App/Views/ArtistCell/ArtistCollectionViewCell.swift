@@ -22,6 +22,7 @@ class ArtistCollectionViewCell: UICollectionViewCell {
     private let artistName: UILabel = {
         let label = UILabel(frame: .zero)
         label.textColor = .white
+        label.font = UIFont(name: Constants.Fonts.arial, size: 17)
         label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         

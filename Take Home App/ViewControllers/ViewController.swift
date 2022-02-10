@@ -95,8 +95,8 @@ class ViewController: UIViewController {
     }
     
     func showErrorAlert() {
-        let alert = UIAlertController(title: "Oops", message: "Something when wrong logging in", preferredStyle: .alert)
-        let dismiss = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
+        let alert = UIAlertController(title: Constants.Errors.oops, message: Constants.Errors.errorLogingIn, preferredStyle: .alert)
+        let dismiss = UIAlertAction(title: Constants.Texts.dismissButton, style: .cancel, handler: nil)
         alert.addAction(dismiss)
         
         present(alert, animated: true)

@@ -15,7 +15,7 @@ extension SpotifyManager {
         let components = getBodyParametersForTokenExchange(withCode: code)
         
         var request = URLRequest(url: url)
-        request.httpMethod = "POST"
+        request.httpMethod = HTTPMethod.POST.rawValue
         request.httpBody = components.query?.data(using: .utf8)
         request.setValue(Constants.API.applicationParameter, forHTTPHeaderField: Constants.API.contentTypeHeaderField)
         
@@ -72,6 +72,6 @@ extension SpotifyManager {
         UserDefaults.standard.set(nil, forKey: Constants.UserDefaults.expiradionDate)
         UserDefaults.standard.set(nil, forKey: Constants.UserDefaults.refreshToken)
         
-        completion(true )
+        completion(true)
     }
 }

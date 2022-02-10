@@ -23,7 +23,7 @@ class SongTableViewCell: UITableViewCell {
     
     private let nameLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.font = UIFont(name: "Arial", size: 18)
+        label.font = UIFont(name: Constants.Fonts.arial, size: 18)
         label.numberOfLines = 2
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -33,7 +33,7 @@ class SongTableViewCell: UITableViewCell {
     
     private let durationLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.font = UIFont(name: "Arial", size: 16)
+        label.font = UIFont(name: Constants.Fonts.arial, size: 16)
         label.numberOfLines = 1
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
