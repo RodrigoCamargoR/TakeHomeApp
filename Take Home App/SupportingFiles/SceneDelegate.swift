@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         
         if SpotifyManager.shared.isSignedIn {
-            window.rootViewController = HomeViewController()
+            window.rootViewController = UINavigationController(rootViewController: HomeViewController())
         } else {
             let navController = UINavigationController(rootViewController: ViewController())
             window.rootViewController = navController
