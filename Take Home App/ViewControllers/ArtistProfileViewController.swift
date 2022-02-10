@@ -13,7 +13,7 @@ class ArtistProfileViewController: UIViewController {
     
     //MARK: - Properties
 
-    private var controller: ArtistController?
+    private lazy var controller = ArtistController(viewController: self)
     
     private var profileImage: UIImageView = {
         let imageView = UIImageView(frame: .zero)
@@ -57,8 +57,6 @@ class ArtistProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        guard let controller = controller else { return }
-
         controller.fetchSongs()
     }
     
@@ -104,17 +102,11 @@ class ArtistProfileViewController: UIViewController {
     
     //MARK: - Methods
     func setArtist(artist: Artist) {
-        controller = ArtistController(viewController: self)
-        guard let controller = controller else { return }
-
         controller.setArtist(with: artist)
     }
 
     private func setUpProfile() {
-        guard
-            let controller = controller,
-            let artist = controller.getArtist()
-        else { return }
+        guard  let artist = controller.getArtist() else { return }
         
         artistName.text = artist.name
         
@@ -155,7 +147,6 @@ extension ArtistProfileViewController: UITableViewDelegate {
 extension ArtistProfileViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let controller = controller else { return 0 }
         let songs = controller.getSongs()
         
         return songs.count > 5 ? 5 : songs.count
@@ -164,10 +155,7 @@ extension ArtistProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SongTableViewCell.identifier, for: indexPath)
         
-        guard
-            let songCell = cell as? SongTableViewCell,
-            let controller = controller
-        else { return cell }
+        guard let songCell = cell as? SongTableViewCell else { return cell }
         
         let currentSong = controller.getSong(from: indexPath.row)
         songCell.setupCell(with: currentSong)
