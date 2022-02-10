@@ -10,18 +10,18 @@ import Kingfisher
 
 class ArtistCollectionViewCell: UICollectionViewCell {
     
-    private let artistImage: UIImageView = {
+    private lazy var artistImage: UIImageView = {
         let imageView = UIImageView(frame: .zero)
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.cornerRadius = 10
+        imageView.clipsToBounds = true
         
         return imageView
     }()
     
     private let artistName: UILabel = {
         let label = UILabel(frame: .zero)
-        label.textColor = .black
+        label.textColor = .white
         label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -43,6 +43,11 @@ class ArtistCollectionViewCell: UICollectionViewCell {
         
         artistName.text = artist.name
         
+        guard artist.profileImage.count > 0 else {
+            artistImage.image = UIImage(named: "No-Image")
+            return
+        }
+        
         let profileImageUrlString = artist.profileImage[0].url
         guard let profileImageUrl = URL(string: profileImageUrlString) else { return }
         artistImage.kf.setImage(with: profileImageUrl)
@@ -51,10 +56,23 @@ class ArtistCollectionViewCell: UICollectionViewCell {
     func setupCellView() {
         layer.cornerRadius = 10
         backgroundColor = .lightGray
+        
+        guard
+            let sublayersCount = artistImage.layer.sublayers?.count,
+            sublayersCount < 3
+        else { return }
+        
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = artistImage.frame
+        gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        gradient.locations = [0.0, 1.2]
+
+        artistImage.layer.insertSublayer(gradient, at: 0)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        artistImage.layer.cornerRadius = 10
         
         NSLayoutConstraint.activate([
             artistImage.topAnchor.constraint(equalTo: contentView.topAnchor),

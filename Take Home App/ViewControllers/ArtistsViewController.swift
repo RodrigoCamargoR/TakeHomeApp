@@ -12,7 +12,7 @@ class ArtistsViewController: UIViewController {
     //MARK: - Properties
     private lazy var artistsTitle: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "Artists found for: \(query ?? "")"
+        label.text = artists != nil ? "Artists found for: \(query ?? "")" : "There were no results for \(query ?? "")"
         label.font = UIFont(name: "Arial", size: 20)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -46,6 +46,7 @@ class ArtistsViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         setupConstraints()
+        navigationController?.navigationBar.isHidden = false
         collectionView.reloadData()
     }
 
@@ -62,7 +63,7 @@ class ArtistsViewController: UIViewController {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            artistsTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
+            artistsTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
             artistsTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             artistsTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             
@@ -77,7 +78,11 @@ class ArtistsViewController: UIViewController {
 extension ArtistsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let artists = artists else { return }
-        print(artists[indexPath.row].name)
+        
+        let viewController = ArtistProfileViewController()
+        viewController.setArtist(artist: artists[indexPath.row])
+        
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 
@@ -106,8 +111,8 @@ extension ArtistsViewController: UICollectionViewDataSource {
 
 extension ArtistsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let screenWidth = view.frame.width
+        let screenWidth = view.frame.size.width
         let collectionHeight = collectionView.frame.height
-        return CGSize(width: screenWidth / 3.6, height: collectionHeight / 4.5)
+        return CGSize(width: (screenWidth - 10) / 3.5, height: collectionHeight / 4)
     }
 }

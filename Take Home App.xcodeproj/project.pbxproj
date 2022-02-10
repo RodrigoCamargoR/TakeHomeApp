@@ -27,6 +27,7 @@
 		84772E2227B3085500439405 /* ArtistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84772E2127B3085500439405 /* ArtistsViewController.swift */; };
 		84772E2627B319D200439405 /* ArtistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84772E2427B319D200439405 /* ArtistCollectionViewCell.swift */; };
 		84772E2727B319D200439405 /* ArtistCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84772E2527B319D200439405 /* ArtistCollectionViewCell.xib */; };
+		84772E2927B4C3E300439405 /* ArtistProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84772E2827B4C3E200439405 /* ArtistProfileViewController.swift */; };
 		ECE4D1AD1387705E5D134038 /* Pods_Take_Home_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DB0F1DEEB44842B1FB4EBD5 /* Pods_Take_Home_App.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		84772E2127B3085500439405 /* ArtistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistsViewController.swift; sourceTree = "<group>"; };
 		84772E2427B319D200439405 /* ArtistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCollectionViewCell.swift; sourceTree = "<group>"; };
 		84772E2527B319D200439405 /* ArtistCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArtistCollectionViewCell.xib; sourceTree = "<group>"; };
+		84772E2827B4C3E200439405 /* ArtistProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +78,6 @@
 				2A5BB162AC9C07FD4D1E2203 /* Pods-Take Home App.debug.xcconfig */,
 				3259338473451558A96E6623 /* Pods-Take Home App.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -141,6 +142,7 @@
 				84772E0F27AF8B0800439405 /* AuthViewController.swift */,
 				84772E1127AFA49F00439405 /* HomeViewController.swift */,
 				84772E2127B3085500439405 /* ArtistsViewController.swift */,
+				84772E2827B4C3E200439405 /* ArtistProfileViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -298,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84772E2927B4C3E300439405 /* ArtistProfileViewController.swift in Sources */,
 				84772E1427AFB44000439405 /* SpotifyManager+Auth.swift in Sources */,
 				84772E0727AF46AE00439405 /* Constants.swift in Sources */,
 				84772E0527AF45CC00439405 /* SpotifyManager.swift in Sources */,

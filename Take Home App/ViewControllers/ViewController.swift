@@ -36,18 +36,20 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         setupConstraints()
+        loginButton.layer.cornerRadius = loginButton.frame.size.height / 2
     }
     
     //MARK: - Setups
     private func setupViews() {
         view.addSubview(welcomeLabel)
         view.addSubview(loginButton)
+        
+        view.backgroundColor = .white
     }
     
     private func setupConstraints() {
@@ -73,7 +75,6 @@ class ViewController: UIViewController {
                 self?.handleSignIn(success: success)
             }
         }
-        vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -84,8 +85,9 @@ class ViewController: UIViewController {
         }
         
         let vc = HomeViewController()
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true)
+        let navigationController = UINavigationController(rootViewController: vc)
+        navigationController.modalPresentationStyle = .fullScreen
+        present(navigationController, animated: true)
     }
     
     private func showErrorAlert() {

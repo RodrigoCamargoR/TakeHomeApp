@@ -66,4 +66,12 @@ extension SpotifyManager {
         
         return basicToken?.base64EncodedString()
     }
+    
+    func signOut(completion: (Bool) -> Void) {
+        UserDefaults.standard.set(nil, forKey: Constants.UserDefaults.accessToken)
+        UserDefaults.standard.set(nil, forKey: Constants.UserDefaults.expiradionDate)
+        UserDefaults.standard.set(nil, forKey: Constants.UserDefaults.refreshToken)
+        
+        completion(true )
+    }
 }

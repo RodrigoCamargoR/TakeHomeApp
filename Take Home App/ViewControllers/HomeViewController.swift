@@ -10,6 +10,17 @@ import UIKit
 class HomeViewController: UIViewController {
 
     //MARK: - Properties
+    private var signOutButton: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.setTitle("Sign Out", for: .normal)
+        button.backgroundColor = .clear
+        button.titleLabel?.textColor = .white
+        button.addTarget(self, action: #selector(signOut), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        return button
+    }()
+    
     private var welcomeLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = UIFont(name: "Arial", size: 38)
@@ -25,7 +36,7 @@ class HomeViewController: UIViewController {
     private var searchArtistLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = UIFont(name: "Arial", size: 20)
-        label.text = "Look for your favorite artist!"
+        label.text = "Look for your favorite singer!"
         label.textAlignment = .center
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -68,6 +79,7 @@ class HomeViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         setupConstraints()
+        navigationController?.navigationBar.isHidden = true
         searchButton.layer.cornerRadius = searchButton.frame.height / 2
     }
     
@@ -75,6 +87,7 @@ class HomeViewController: UIViewController {
     private func setupViews() {
         searchBar.delegate = self
         
+        view.addSubview(signOutButton)
         view.addSubview(welcomeLabel)
         view.addSubview(searchArtistLabel)
         view.addSubview(searchBar)
@@ -83,7 +96,12 @@ class HomeViewController: UIViewController {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            signOutButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 40),
+            signOutButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            signOutButton.widthAnchor.constraint(equalToConstant: 100),
+            signOutButton.heightAnchor.constraint(equalToConstant: 44),
+            
+            welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
             welcomeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             welcomeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
@@ -117,9 +135,13 @@ class HomeViewController: UIViewController {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let response):
-                    vc.artists = response.artists.items
                     vc.query = query
-                    self?.present(vc, animated: true)
+                    if let artists = response.artists.items {
+                        vc.artists = artists.sorted(by: { $0.popularity > $1.popularity } )
+                    } else {
+                        vc.artists = nil
+                    }
+                    self?.navigationController?.pushViewController(vc, animated: true)
                     break
                 case .failure(let error):
                     print(error.localizedDescription)
@@ -132,6 +154,25 @@ class HomeViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
+    
+    @objc private func signOut() {
+
+        SpotifyManager.shared.signOut { [weak self] success in
+            guard success else { return }
+            let confirmationAlert = UIAlertController(title: "Sign Out", message: "Are you sure you want to sign out?", preferredStyle: .alert)
+            let cancelSignOut = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            let confirmSignOut = UIAlertAction(title: "Confirm", style: .destructive) { _ in
+                let navController = UINavigationController(rootViewController: ViewController())
+                navController.modalPresentationStyle = .fullScreen
+                self?.present(navController, animated: true)
+            }
+            confirmationAlert.addAction(cancelSignOut)
+            confirmationAlert.addAction(confirmSignOut)
+            self?.present(confirmationAlert, animated: true)
+        }
+
+    }
+
 }
 
 extension HomeViewController: UISearchBarDelegate {
