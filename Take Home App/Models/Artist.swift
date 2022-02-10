@@ -14,9 +14,6 @@ struct SearchResponse: Codable {
 struct ArtistsResponse: Codable {
     var items: [Artist]?
     
-    func order(by popularity: Int) {
-        
-    }
 }
 
 struct Artist: Codable {
