@@ -38,4 +38,8 @@ struct Constants {
         static let refreshToken = "refresh_token"
         static let expiradionDate = "expiration_date"
     }
+    
+    struct Identifiers {
+        static let artistSearch = "ArtistSearchReusableCell"
+    }
 }

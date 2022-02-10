@@ -110,11 +110,16 @@ class HomeViewController: UIViewController {
             !query.isEmpty
         else { return }
         
-        SpotifyManager.shared.searchArtists(with: query) { result in
+        let vc = ArtistsViewController()
+        vc.modalPresentationStyle = .popover
+        
+        SpotifyManager.shared.searchArtists(with: query) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let artists):
-                    print(artists)
+                case .success(let response):
+                    vc.artists = response.artists.items
+                    vc.query = query
+                    self?.present(vc, animated: true)
                     break
                 case .failure(let error):
                     print(error.localizedDescription)
@@ -130,10 +135,6 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: UISearchBarDelegate {
-    
-    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
-        return true
-    }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard let query = searchBar.searchTextField.text else { return }
