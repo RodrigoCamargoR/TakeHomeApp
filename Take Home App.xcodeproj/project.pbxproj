@@ -178,11 +178,27 @@
 		84772E2327B319A000439405 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				84772E2427B319D200439405 /* ArtistCollectionViewCell.swift */,
-				84772E2527B319D200439405 /* ArtistCollectionViewCell.xib */,
-				84772E2E27B5812100439405 /* SongTableViewCell.swift */,
+				84772E3027B5A61B00439405 /* ArtistCell */,
+				84772E3127B5A62C00439405 /* SongCell */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		84772E3027B5A61B00439405 /* ArtistCell */ = {
+			isa = PBXGroup;
+			children = (
+				84772E2427B319D200439405 /* ArtistCollectionViewCell.swift */,
+				84772E2527B319D200439405 /* ArtistCollectionViewCell.xib */,
+			);
+			path = ArtistCell;
+			sourceTree = "<group>";
+		};
+		84772E3127B5A62C00439405 /* SongCell */ = {
+			isa = PBXGroup;
+			children = (
+				84772E2E27B5812100439405 /* SongTableViewCell.swift */,
+			);
+			path = SongCell;
 			sourceTree = "<group>";
 		};
 		B56DB16F8FF3F6FBE7890665 /* Frameworks */ = {
