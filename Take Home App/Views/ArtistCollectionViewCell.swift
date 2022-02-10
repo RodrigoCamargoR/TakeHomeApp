@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ArtistCollectionViewCell: UICollectionViewCell {
     
@@ -39,9 +40,12 @@ class ArtistCollectionViewCell: UICollectionViewCell {
     
     func configureCell(artist: Artist) {
         setupCellView()
+        
         artistName.text = artist.name
-        artistImage.image = UIImage(systemName: "star")
-        // TODO: Setup image with Kingfisher
+        
+        let profileImageUrlString = artist.profileImage[0].url
+        guard let profileImageUrl = URL(string: profileImageUrlString) else { return }
+        artistImage.kf.setImage(with: profileImageUrl)
     }
     
     func setupCellView() {
