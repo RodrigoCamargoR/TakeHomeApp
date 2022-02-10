@@ -28,6 +28,7 @@
 		84772E2627B319D200439405 /* ArtistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84772E2427B319D200439405 /* ArtistCollectionViewCell.swift */; };
 		84772E2727B319D200439405 /* ArtistCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84772E2527B319D200439405 /* ArtistCollectionViewCell.xib */; };
 		84772E2927B4C3E300439405 /* ArtistProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84772E2827B4C3E200439405 /* ArtistProfileViewController.swift */; };
+		84772E2B27B5610D00439405 /* SpotifyManager+Songs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84772E2A27B5610C00439405 /* SpotifyManager+Songs.swift */; };
 		ECE4D1AD1387705E5D134038 /* Pods_Take_Home_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DB0F1DEEB44842B1FB4EBD5 /* Pods_Take_Home_App.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		84772E2427B319D200439405 /* ArtistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCollectionViewCell.swift; sourceTree = "<group>"; };
 		84772E2527B319D200439405 /* ArtistCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArtistCollectionViewCell.xib; sourceTree = "<group>"; };
 		84772E2827B4C3E200439405 /* ArtistProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistProfileViewController.swift; sourceTree = "<group>"; };
+		84772E2A27B5610C00439405 /* SpotifyManager+Songs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpotifyManager+Songs.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 				84772E1527AFB4F300439405 /* SpotifyManager+Token.swift */,
 				84772E1727AFB60400439405 /* SpotifyManager+RefreshToken.swift */,
 				84772E1B27B0808200439405 /* SpotifyManager+SearchArtist.swift */,
+				84772E2A27B5610C00439405 /* SpotifyManager+Songs.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				84772E2927B4C3E300439405 /* ArtistProfileViewController.swift in Sources */,
 				84772E1427AFB44000439405 /* SpotifyManager+Auth.swift in Sources */,
 				84772E0727AF46AE00439405 /* Constants.swift in Sources */,
+				84772E2B27B5610D00439405 /* SpotifyManager+Songs.swift in Sources */,
 				84772E0527AF45CC00439405 /* SpotifyManager.swift in Sources */,
 				84772E2227B3085500439405 /* ArtistsViewController.swift in Sources */,
 				84772DF327AC7A6B00439405 /* ViewController.swift in Sources */,
